@@ -16,17 +16,12 @@
     export default {
         name: "Button",
         methods: {
-            @before('1111')
-            @after('2222')
-            @around('3333')
+            @after('2222','44444','55555')
             handleClick(evt) {
-                debugger
-                // this.$emit('click', evt);
-                alert(11111);
+                alert(evt);
             },
-            @eventBefore('3333')
+            @before(['1111','222222','33333'])
             handleClick1(evt) {
-                debugger
                 alert(evt);
             }
         },
