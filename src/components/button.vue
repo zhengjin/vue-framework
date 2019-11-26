@@ -7,11 +7,14 @@
         <button @click="handleClick">
             sssss
         </button>
+        <button @click="handleClick2">
+            ddddd
+        </button>
     </div>
 </template>
 
 <script>
-   import {before, after, around, eventBefore} from '@/burry/decorator'
+   import {before, after, around} from '@/burry/decorator'
 
     export default {
         name: "Button",
@@ -22,6 +25,11 @@
             },
             @before(['1111','222222','33333'])
             handleClick1(evt) {
+                alert(evt);
+            },
+            @before(['handleClick2','222222','222222','33333'])
+            @around(['333333','4444','55555'])
+            handleClick2(evt) {
                 alert(evt);
             }
         },
