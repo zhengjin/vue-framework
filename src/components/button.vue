@@ -2,13 +2,13 @@
 <template>
     <div>
         <button @click="handleClick1">
-            aaaaa
+            click before
         </button>
         <button @click="handleClick">
-            sssss
+            click after
         </button>
         <button @click="handleClick2">
-            ddddd
+            click around
         </button>
     </div>
 </template>
@@ -18,9 +18,20 @@
 
     export default {
         name: "Button",
+        data() {
+            return {
+                buryData: ['2222','44444','55555'],
+                buryBeforeData: ['1111','222222','33333'],
+                buryAroundData: ['handleClick2','222222','222222','33333'],
+            }
+        },
+        created() {
+            this.buryAroundData = ['handleClick2','222222','222222','33333'];
+        },
         methods: {
-            @after('2222','44444','55555')
+            @after(['2222','44444','55555'])
             handleClick(evt) {
+                const page = this.$route.path;
                 alert(evt);
             },
             @before(['1111','222222','33333'])
@@ -28,7 +39,7 @@
                 alert(evt);
             },
             @before(['handleClick2','222222','222222','33333'])
-            @around(['333333','4444','55555'])
+            @around(['handleClick1','222222','222222','33333'])
             handleClick2(evt) {
                 alert(evt);
             }

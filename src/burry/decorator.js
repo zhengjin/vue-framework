@@ -6,16 +6,11 @@ let parameter = new Map();//参数工厂
  * @returns {Function}
  */
 export const before = function (...param) {
-    // parameter = new Map();
-    // parameter.set('before', param);
     return function (target, key, descriptor) {
-        // let ssss = param;
-        // descriptor.writable = param;
         parameter.set('before' + key, param);
         descriptor.value = descriptor.value.before(() => {
-            console.log(`Action 参数-${param}-${key} 触发埋点!`);
-            // console.log(`Action-${parameter[0]} 触发埋点!`);
-            // console.log(`Action-${key} 触发埋点!`);
+            const page = window.location.pathname;
+            console.log(`pageName id-${page}Action 参数-${param}****before****-触发事件名称-${key} 触发埋点!`);
         });
     };
 };
@@ -26,30 +21,23 @@ export const before = function (...param) {
  * @returns {Function}
  */
 export const after = function (...param) {
-    // parameter = param;
-    // parameter.set('after', param);
     return function (target, key, descriptor) {
         parameter.set('after' + key, param);
         descriptor.value = descriptor.value.after(() => {
-            console.log(`Action 参数-${param}****after****-${key} 触发埋点!`);
-            // console.log(`Action-${parameter[0]} 触发埋点!`);
-            // console.log(`Action-${key} 触发埋点!`);
+            const page = window.location.pathname;
+            console.log(`pageName id-${page}Action 参数-${param}****after****-触发事件名称-${key} 触发埋点!`);
         });
     };
 };
 export const around = function (...param) {
-    // parameter = param;
-    // parameter.set('around', param);
     return function (target, key, descriptor) {
         parameter.set('around' + key, param);
         descriptor.value = descriptor.value.around(() => {
-            console.log(`Action 参数-${param} ****around*****-${key} 触发埋点before!`);
-            // console.log(`Action-${parameter[0]} 触发埋点!`);
-            // console.log(`Action-${key} 触发埋点before!`);
+            const page = window.location.pathname;
+            console.log(`pageName id-${page}Action 参数-${param} ****around*****-触发事件名称-${key} 触发埋点before!`);
         }, () => {
-            console.log(`Action 参数-${param} ***around***-${key} 触发埋点after!`);
-            // console.log(`Action-${parameter[0]} 触发埋点!`);
-            // console.log(`Action-${key} 触发埋点after!`);
+            const page = window.location.pathname;
+            console.log(`pageName id-${page}Action 参数-${param} ***around***-触发事件名称-${key} 触发埋点after!`);
         });
     };
 };
