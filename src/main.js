@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import Function from './burry/prototype'
+import Function from './tracker/prototype'
 
 import {router} from './router'
 

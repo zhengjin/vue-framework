@@ -1,5 +1,4 @@
 /* eslint-disable no-console,no-unused-vars,no-debugger */
-let parameter = new Map();//参数工厂
 /**
  * 在around之前
  * @param param
@@ -7,8 +6,7 @@ let parameter = new Map();//参数工厂
  */
 export const before = function (...param) {
     return function (target, key, descriptor) {
-        parameter.set('before' + key, param);
-        descriptor.value = descriptor.value.before(() => {
+        descriptor.value = descriptor.value.before((evt, arg) => {
             const page = window.location.pathname;
             console.log(`pageName id-${page}Action 参数-${param}****before****-触发事件名称-${key} 触发埋点!`);
         });
@@ -22,8 +20,7 @@ export const before = function (...param) {
  */
 export const after = function (...param) {
     return function (target, key, descriptor) {
-        parameter.set('after' + key, param);
-        descriptor.value = descriptor.value.after(() => {
+        descriptor.value = descriptor.value.after((evt, arg) => {
             const page = window.location.pathname;
             console.log(`pageName id-${page}Action 参数-${param}****after****-触发事件名称-${key} 触发埋点!`);
         });
@@ -31,11 +28,10 @@ export const after = function (...param) {
 };
 export const around = function (...param) {
     return function (target, key, descriptor) {
-        parameter.set('around' + key, param);
-        descriptor.value = descriptor.value.around(() => {
+        descriptor.value = descriptor.value.around((evt, arg) => {
             const page = window.location.pathname;
             console.log(`pageName id-${page}Action 参数-${param} ****around*****-触发事件名称-${key} 触发埋点before!`);
-        }, () => {
+        }, (evt, ...arg) => {
             const page = window.location.pathname;
             console.log(`pageName id-${page}Action 参数-${param} ***around***-触发事件名称-${key} 触发埋点after!`);
         });

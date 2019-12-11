@@ -4,7 +4,7 @@
         <button @click="handleClick1">
             click before
         </button>
-        <button @click="handleClick">
+        <button @click="handleClick($event,resultData)">
             click after
         </button>
         <button @click="handleClick2">
@@ -14,10 +14,31 @@
 </template>
 
 <script>
-   import {before, after, around} from '@/burry/decorator'
+   import {before, after, around} from '@/tracker/decorator'
 
-    export default {
+   const watchList = {
+       eat () {
+           console.log('after eat');
+           const name = this.name;
+           debugger
+           return {
+               eventType: 'eat',
+               name,
+               data: this.props.resultData
+           }
+       }
+   }
+
+   export default {
         name: "Button",
+        props: {
+            resultData: {
+                type: Object,
+                default() {
+                    return { transferChannel: 4 } // 转账渠道，转账给谁
+                }
+            }
+        },
         data() {
             return {
                 buryData: ['2222','44444','55555'],
@@ -28,8 +49,22 @@
         created() {
             this.buryAroundData = ['handleClick2','222222','222222','33333'];
         },
+        watch: {
+            tag30ResultItemD: {
+                handler (a,b) {
+                    console.log(a);
+                    console.log(b);
+                },
+                deep: true
+            }
+        },
+        computed: {
+            successTime() {
+                return ['handleClick2','222222','222222','33333'];
+            },
+        },
         methods: {
-            @after(['2222','44444','55555'])
+            @after(['222222','33333','44444'])
             handleClick(evt) {
                 const page = this.$route.path;
                 alert(evt);
@@ -38,7 +73,7 @@
             handleClick1(evt) {
                 alert(evt);
             },
-            @before(['handleClick2','222222','222222','33333'])
+            @before(watchList)
             @around(['handleClick1','222222','222222','33333'])
             handleClick2(evt) {
                 alert(evt);
