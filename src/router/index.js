@@ -2,6 +2,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import store from '../store/store'
+import * as types from '../store/types'
+
 let home = r => require.ensure([], () => r(require('@/pages/home')), 'home')
 let segmentation = r => require.ensure([], () => r(require('@/pages/segmentation/Segmentation')), 'segmentation')
 
@@ -21,6 +24,12 @@ const routes = [
     }
 ];
 const pathes = routes.map(i => i.path);
+
+// 页面刷新时，重新赋值token
+if (window.localStorage.getItem('token')) {
+    store.commit(types.LOGIN, window.localStorage.getItem('token'))
+}
+
 const router = new Router({
     mode: 'history',
     routes
