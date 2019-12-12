@@ -15,6 +15,7 @@
 
 <script>
    import {before, after, around} from '@/tracker/decorator'
+   import * as Sentry from '@sentry/browser';
 
    const watchList = {
        eat () {
@@ -67,16 +68,25 @@
             @after(['222222','33333','44444'])
             handleClick(evt) {
                 const page = this.$route.path;
-                alert(evt);
+                // alert(evt);
             },
             @before(['1111','222222','33333'])
             handleClick1(evt) {
-                alert(evt);
+                // alert(evt);
             },
             @before(watchList)
             @around(['handleClick1','222222','222222','33333'])
             handleClick2(evt) {
-                alert(evt);
+                // alert(evt);
+                throw new Error("Something broke")
+                // this.componentDidCatch(new Error("Something broke"));
+            },
+            componentDidCatch(error, errorInfo) {
+                Sentry.withScope((scope) => {
+                    scope.setExtras(errorInfo);
+                    const eventId = Sentry.captureException(error);
+                    this.setState({eventId});
+                });
             }
         },
     }
