@@ -78,8 +78,8 @@
             @around(['handleClick1','222222','222222','33333'])
             handleClick2(evt) {
                 // alert(evt);
-                throw new Error("Something broke")
-                // this.componentDidCatch(new Error("Something broke"));
+                // throw new Error("Something broke")
+                this.componentDidCatch(new Error("Something broke"));
             },
             componentDidCatch(error, errorInfo) {
                 Sentry.withScope((scope) => {
