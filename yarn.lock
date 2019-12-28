@@ -5715,10 +5715,10 @@ osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-oversea-vue@1.0.25:
-  version "1.0.25"
-  resolved "https://registry.npm.taobao.org/oversea-vue/download/oversea-vue-1.0.25.tgz#6572ec0c82536e67e4318f5fca927dbb8344f923"
-  integrity sha1-ZXLsDIJTbmfkMY9fypJ9u4NE+SM=
+oversea-vue@1.0.31:
+  version "1.0.31"
+  resolved "https://registry.npm.taobao.org/oversea-vue/download/oversea-vue-1.0.31.tgz#d9fda5a447f38c776095ca5aaa1d147ca1f77c32"
+  integrity sha1-2f2lpEfzjHdglcpaqh0UfKH3fDI=
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
