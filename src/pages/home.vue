@@ -35,6 +35,8 @@
                 <el-button @click="resetForm('ruleForm')" type="danger" style="width: 100%" size="large" round :disabled="false">重置</el-button>
             </div>
         </el-form>
+
+        <div class="circle"></div>
     </div>
 </template>
 
@@ -43,10 +45,29 @@
 
     // import HelloWorld from '@/components/HelloWorld.vue'
     // import Button from '@/components/Button.vue'
-    // import Vue from 'vue'
-    // import {Button} from 'oversea-vue'
-    // Vue.use(Button)
 
+    import Vue from 'vue'
+    import {Button, Card, Form, Input, Radio, Checkbox, FormItem} from 'overseas-vue'
+    import 'overseas-vue/lib/theme-chalk/button.css'
+    Vue.component(Button.name, Button);
+
+    import 'overseas-vue/lib/theme-chalk/card.css'
+    Vue.component(Card.name, Card);
+
+    import 'overseas-vue/lib/theme-chalk/input.css'
+    Vue.component(Input.name, Input);
+
+    import 'overseas-vue/lib/theme-chalk/radio.css'
+    Vue.component(Radio.name, Radio);
+
+    import 'overseas-vue/lib/theme-chalk/checkbox.css'
+    Vue.component(Checkbox.name, Checkbox);
+
+    import 'overseas-vue/lib/theme-chalk/icon.css'
+    import 'overseas-vue/lib/theme-chalk/form.css'
+    import 'overseas-vue/lib/theme-chalk/form-item.css'
+    Vue.component(Form.name, Form);
+    Vue.component(FormItem.name, FormItem);
     export default {
         name: "home",
         data() {
@@ -128,5 +149,26 @@
 </script>
 
 <style scoped>
+    @keyframes run {
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(-100vw);
+        }
+        50.000001% {
+            transform: translateX(100vw);
+        }
+    }
 
+    .circle {
+        width: 50px;
+        height: 50px;
+        background: red;
+        border-radius: 50%;
+        animation: linear infinite;
+        animation-name: run;
+        animation-duration: 5s;
+    }
 </style>

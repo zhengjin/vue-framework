@@ -8,7 +8,7 @@ import {router} from './router'
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 
-import 'overseas-vue/lib/theme-chalk/index.css'
+// import 'overseas-vue/lib/theme-chalk/index.css'
 
 // import {
 //     Button
@@ -17,9 +17,9 @@ import 'overseas-vue/lib/theme-chalk/index.css'
 //
 // Vue.component(Button.name, Button);
 
-import overseaComponents from 'overseas-vue'
-
-Vue.use(overseaComponents);
+// import overseaComponents from 'overseas-vue'
+//
+// Vue.use(overseaComponents);
 
 Vue.config.productionTip = false;
 
