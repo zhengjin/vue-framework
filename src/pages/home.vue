@@ -1,6 +1,12 @@
 <template>
     <div style="margin: 20px;">
-        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" class="demo-ruleForm">
+        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm">
+            <el-form-item label="金额" prop="age">
+                <el-input-money v-model="ruleForm.age" clearable placeholder="0.00">
+                    <i style="color: #333333" slot="suffix">THB</i>
+                </el-input-money>
+            </el-form-item>
+
             <el-form-item label="密码" prop="pass">
                 <el-input v-model="ruleForm.pass" autocomplete="off" clearable placeholder="请输入内容"></el-input>
             </el-form-item>
@@ -16,18 +22,17 @@
                 </el-card>
             </div>
 
-            <div style="margin: 20px 0">
+            <div style="margin: 20px 0; text-align: left;">
                 <el-checkbox v-model="checked1">备选项1</el-checkbox>
             </div>
 
-            <div style="margin: 20px 0">
+            <div style="margin: 20px 0; text-align: left;">
                 <el-radio border size="small" v-model="radio" label="1" style="width: 100%">Paid</el-radio>
             </div>
 
             <el-form-item label="年龄" prop="age">
-                <el-input v-model.number="ruleForm.age" placeholder="数字键盘" type="number" pattern="[0-9]*" inputmode="decimal" step="0.01" clearable></el-input>
+                <el-input-number type="number" v-model.number="ruleForm.age" clearable placeholder="0.00"></el-input-number>
             </el-form-item>
-
             <div>
                 <el-button @click="submitForm('ruleForm')" type="danger" style="width: 100%" size="large" round :disabled="false">提交</el-button>
             </div>
@@ -35,8 +40,6 @@
                 <el-button @click="resetForm('ruleForm')" type="danger" style="width: 100%" size="large" round :disabled="false">重置</el-button>
             </div>
         </el-form>
-
-        <div class="circle"></div>
     </div>
 </template>
 
@@ -47,7 +50,7 @@
     // import Button from '@/components/Button.vue'
 
     import Vue from 'vue'
-    import {Button, Card, Form, Input, Radio, Checkbox, FormItem} from 'overseas-vue'
+    import {Button, Card, Form, Input, Radio, Checkbox, FormItem, InputNumber, InputMoney} from 'overseas-vue'
     import 'overseas-vue/lib/theme-chalk/button.css'
     Vue.component(Button.name, Button);
 
@@ -62,6 +65,12 @@
 
     import 'overseas-vue/lib/theme-chalk/checkbox.css'
     Vue.component(Checkbox.name, Checkbox);
+
+    import 'overseas-vue/lib/theme-chalk/input-money.css'
+    Vue.component(InputMoney.name, InputMoney);
+
+    import 'overseas-vue/lib/theme-chalk/input-number.css'
+    Vue.component(InputNumber.name, InputNumber);
 
     import 'overseas-vue/lib/theme-chalk/icon.css'
     import 'overseas-vue/lib/theme-chalk/form.css'
@@ -149,26 +158,5 @@
 </script>
 
 <style scoped>
-    @keyframes run {
-        0%,
-        100% {
-            transform: translateX(0);
-        }
-        50% {
-            transform: translateX(-100vw);
-        }
-        50.000001% {
-            transform: translateX(100vw);
-        }
-    }
 
-    .circle {
-        width: 50px;
-        height: 50px;
-        background: red;
-        border-radius: 50%;
-        animation: linear infinite;
-        animation-name: run;
-        animation-duration: 5s;
-    }
 </style>

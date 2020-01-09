@@ -9,14 +9,7 @@ import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 
 // import 'overseas-vue/lib/theme-chalk/index.css'
-
-// import {
-//     Button
-//     // ...
-// } from 'oversea-vue'
 //
-// Vue.component(Button.name, Button);
-
 // import overseaComponents from 'overseas-vue'
 //
 // Vue.use(overseaComponents);
