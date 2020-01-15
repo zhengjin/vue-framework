@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import '../static/js/rem.js';
 
 import Function from './tracker/prototype'
 

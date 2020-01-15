@@ -1493,7 +1493,7 @@ async-limiter@~1.0.0:
 
 async-validator@~1.8.1:
   version "1.8.5"
-  resolved "https://registry.npm.taobao.org/async-validator/download/async-validator-1.8.5.tgz?cache=0&sync_timestamp=1575620555389&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fasync-validator%2Fdownload%2Fasync-validator-1.8.5.tgz#dc3e08ec1fd0dddb67e60842f02c0cd1cec6d7f0"
+  resolved "https://registry.npm.taobao.org/async-validator/download/async-validator-1.8.5.tgz?cache=0&sync_timestamp=1575620590760&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fasync-validator%2Fdownload%2Fasync-validator-1.8.5.tgz#dc3e08ec1fd0dddb67e60842f02c0cd1cec6d7f0"
   integrity sha1-3D4I7B/Q3dtn5ghC8CwM0c7G1/A=
   dependencies:
     babel-runtime "6.x"
@@ -5567,21 +5567,21 @@ os-tmpdir@~1.0.2:
   resolved "https://registry.npm.taobao.org/os-tmpdir/download/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
 
-overseas-numeric-keyboard@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.npm.taobao.org/overseas-numeric-keyboard/download/overseas-numeric-keyboard-0.0.3.tgz#05f92a7e2ee1c41e1069fbb24ff9927de4988868"
-  integrity sha1-Bfkqfi7hxB4QafuyT/mSfeSYiGg=
+overseas-numeric-keyboard@0.0.13:
+  version "0.0.13"
+  resolved "https://registry.npm.taobao.org/overseas-numeric-keyboard/download/overseas-numeric-keyboard-0.0.13.tgz#809a7c9789c8fa324dd947de4dcfc4148fbfbd10"
+  integrity sha1-gJp8l4nI+jJN2UfeTc/EFI+/vRA=
 
-overseas-vue@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.npm.taobao.org/overseas-vue/download/overseas-vue-0.0.5.tgz#91ccfff5ba01544f70883ca6119a99e50260d32a"
-  integrity sha1-kcz/9boBVE9wiDymEZqZ5QJg0yo=
+overseas-vue@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.npm.taobao.org/overseas-vue/download/overseas-vue-0.0.7.tgz#bf93b9c95b4a0d84afd1c8a819a4baa4a8595272"
+  integrity sha1-v5O5yVtKDYSv0cioGaS6pKhZUnI=
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
     deepmerge "^1.2.0"
     normalize-wheel "^1.0.1"
-    overseas-numeric-keyboard "0.0.3"
+    overseas-numeric-keyboard "0.0.13"
     resize-observer-polyfill "^1.5.0"
     throttle-debounce "^1.0.1"
 
