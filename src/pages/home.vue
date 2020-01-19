@@ -3,7 +3,7 @@
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm">
             <el-form-item label="金额" prop="age">
                 <el-input-money v-model="ruleForm.age" clearable placeholder="0.00">
-                    <i style="color: #333333" slot="suffix">THB</i>
+                    <i style="color: #333333; font-style:normal" slot="suffix">THB</i>
                 </el-input-money>
             </el-form-item>
 
@@ -13,31 +13,62 @@
             <el-form-item label="确认密码" prop="checkPass">
                 <el-input type="password" v-model="ruleForm.checkPass" clearable placeholder="请输入内容"></el-input>
             </el-form-item>
+            <el-form-item label="年龄" prop="age">
+                <el-input-number type="number" v-model.number="ruleForm.age" clearable placeholder="0" :disabled="true"></el-input-number>
+            </el-form-item>
             <div>
-                <el-card shadow="always" style="margin-bottom: 8px">
+                <el-card shadow="always" style="margin-bottom: .2rem">
                     <el-radio border size="medium" v-model="radio" label="1" style="width: 100%">Split equally</el-radio>
                 </el-card>
                 <el-card shadow="always">
                     <el-radio border size="medium" v-model="radio" label="2" style="width: 100%">Split individually</el-radio>
                 </el-card>
             </div>
-
-            <div style="margin: 20px 0; text-align: left;">
-                <el-checkbox v-model="checked1">备选项1</el-checkbox>
-            </div>
-
-            <div style="margin: 20px 0; text-align: left;">
+            <div>
                 <el-radio border size="small" v-model="radio" label="1" style="width: 100%">Paid</el-radio>
             </div>
 
-            <el-form-item label="年龄" prop="age">
-                <el-input-number type="number" v-model.number="ruleForm.age" clearable placeholder="0.00"></el-input-number>
-            </el-form-item>
+            <div>
+                <el-checkbox v-model="checked1">备选项1</el-checkbox>
+            </div>
+
+            <div>
+                <el-avatar shape="square" :size="medium" :src="circleUrl"></el-avatar>
+                <span style="width: .5rem; display: inline-block"></span>
+                <el-avatar :size="medium" :src="circleUrl"></el-avatar>
+            </div>
             <div>
                 <el-button @click="submitForm('ruleForm')" type="danger" style="width: 100%" size="large" round :disabled="false">提交</el-button>
             </div>
             <div>
                 <el-button @click="resetForm('ruleForm')" type="danger" style="width: 100%" size="large" round :disabled="false">重置</el-button>
+            </div>
+
+            <el-dialog title="提示" :visible.sync="centerDialogVisible" width="30%" center
+                       v-if="showDialog" :show-cancle="true" :confirm-btn-plain="true"
+                       @cancle="cancle" @closeDialog="closeDialog">
+                <p slot="title">titleTxt</p>
+                <p slot="content">
+                    <template>contentTxt</template>
+                </p>
+                <p slot="cancle">Close</p>
+                <p slot="confirm">See reward</p>
+            </el-dialog>
+            <div>
+                <el-button type="danger" style="width: 100%" size="large" round :disabled="false" @click="showDialog = true">点击打开 Dialog</el-button>
+            </div>
+
+            <el-drawer :visible.sync="drawer" :direction="direction" :with-header="false" @cancel="drawer = false" @handleContentClick="closeDialog">
+                <div slot="content">
+                    <template><!--i标签中的id和span中的data-index定位点击的是哪个按钮-->
+                        <i id="paid" class="el-icon-circle-check cell-center"><span :data-index="1" class="cel-btn-txt">mark as paid</span></i>
+                        <i id="show" class="el-icon-collection cell-center"><span :data-index="2" class="cel-btn-txt">show QR</span></i>
+                    </template>
+                </div>
+                <p slot="cancel" class="cell-center">Cancel</p>
+            </el-drawer>
+            <div>
+                <el-button type="danger" style="width: 100%" size="large" round :disabled="false" @click="drawer = true">点击打开 ActionSheet</el-button>
             </div>
         </el-form>
     </div>
@@ -50,7 +81,7 @@
     // import Button from '@/components/Button.vue'
 
     import Vue from 'vue'
-    import {Button, Card, Form, Input, Radio, Checkbox, FormItem, InputNumber, InputMoney} from 'overseas-vue'
+    import {Button, Card, Form, Input, Radio, Checkbox, FormItem, InputNumber, InputMoney, Avatar, Drawer, Dialog} from 'overseas-vue'
     import 'overseas-vue/lib/theme-chalk/button.css'
     Vue.component(Button.name, Button);
 
@@ -71,6 +102,15 @@
 
     import 'overseas-vue/lib/theme-chalk/input-number.css'
     Vue.component(InputNumber.name, InputNumber);
+
+    import 'overseas-vue/lib/theme-chalk/avatar.css'
+    Vue.component(Avatar.name, Avatar);
+
+    import 'overseas-vue/lib/theme-chalk/drawer.css'
+    Vue.component(Drawer.name, Drawer);
+
+    import 'overseas-vue/lib/theme-chalk/dialog.css'
+    Vue.component(Dialog.name, Dialog);
 
     import 'overseas-vue/lib/theme-chalk/icon.css'
     import 'overseas-vue/lib/theme-chalk/form.css'
@@ -120,6 +160,13 @@
                 radio: '1',
                 checked1: false,
                 checked2: true,
+                num: 1,
+                centerDialogVisible: false,
+                circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
+                drawer: false,
+                direction: 'btt',
+                medium: 'medium',
+                showDialog: false,
 
                 ruleForm: {
                     pass: '',
@@ -152,7 +199,25 @@
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
-            }
+            },
+            handleChange(value) {
+                console.log(value);
+            },
+            cancle() {
+                this.showDialog = false
+            },
+            closeDialog(evt) {
+                let dom = evt.target;
+                let targetId = dom.getAttribute('id');
+                let index = dom.getAttribute('data-index');
+                if(targetId === 'paid' || index === '1'){
+                    console.log('call paid method')
+                }else {
+                    console.log('call show method')
+                }
+
+                this.drawer = false;
+            },
         },
     }
 </script>

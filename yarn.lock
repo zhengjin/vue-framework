@@ -5567,21 +5567,21 @@ os-tmpdir@~1.0.2:
   resolved "https://registry.npm.taobao.org/os-tmpdir/download/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
 
-overseas-numeric-keyboard@0.0.13:
-  version "0.0.13"
-  resolved "https://registry.npm.taobao.org/overseas-numeric-keyboard/download/overseas-numeric-keyboard-0.0.13.tgz#809a7c9789c8fa324dd947de4dcfc4148fbfbd10"
-  integrity sha1-gJp8l4nI+jJN2UfeTc/EFI+/vRA=
+overseas-numeric-keyboard@0.0.20:
+  version "0.0.20"
+  resolved "https://registry.npmjs.org/overseas-numeric-keyboard/-/overseas-numeric-keyboard-0.0.20.tgz#f69065643fea469698994bbc5d5f3f0c0556ac37"
+  integrity sha512-M6HNRIXdJsczQZ6AF/tblca7xbuoY8ABUkD7hmQjHJt8LNDMt+QVqERMHjhP3hg0N2YEwZV83f4N5qfikWQwzQ==
 
-overseas-vue@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.npm.taobao.org/overseas-vue/download/overseas-vue-0.0.7.tgz#bf93b9c95b4a0d84afd1c8a819a4baa4a8595272"
-  integrity sha1-v5O5yVtKDYSv0cioGaS6pKhZUnI=
+overseas-vue@0.0.15:
+  version "0.0.15"
+  resolved "https://registry.npmjs.org/overseas-vue/-/overseas-vue-0.0.15.tgz#d93029739fb1e04fd236afefc93073d3bbf9d697"
+  integrity sha512-5UrQeStNCkpYxZ7sESEPocm/DAsUyrAHbbZbsIEpeKeS7N+HUlhpTHRz9p1qq6GnB7oW4PMbMMKKFv/Bxbox7w==
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
     deepmerge "^1.2.0"
     normalize-wheel "^1.0.1"
-    overseas-numeric-keyboard "0.0.13"
+    overseas-numeric-keyboard "0.0.20"
     resize-observer-polyfill "^1.5.0"
     throttle-debounce "^1.0.1"
 
