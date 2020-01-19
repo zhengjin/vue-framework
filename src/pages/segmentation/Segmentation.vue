@@ -1,17 +1,17 @@
 <template>
     <div class="home-wrapper">
-        <Button />
+        <!--<Button />-->
         Segmentation
     </div>
 </template>
 
 <script>
-    import Button from '@/components/Button.vue'
+    // import Button from '@/components/Button.vue'
 
     export default {
         name: "Segmentation",
         components: {
-            Button
+            // Button
         }
     }
 </script>
